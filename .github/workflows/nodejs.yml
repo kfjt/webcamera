@@ -1,4 +1,4 @@
-name: Node CI
+name: Node CI/CD
 
 on:
   push:
@@ -6,8 +6,7 @@ on:
     - master
 
 jobs:
-  build:
-
+  build-deploy:
     runs-on: ubuntu-latest
 
     strategy:
@@ -27,3 +26,9 @@ jobs:
         npm test
       env:
         CI: true
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v2.3.1
+      env:
+        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./public
