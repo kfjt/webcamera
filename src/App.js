@@ -1,8 +1,23 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const videoEl = useRef(null)
+
+  useEffect(() => {
+    ;(async () => {
+      const { mediaDevices } = navigator
+      const video = videoEl.current
+      if (mediaDevices && video !== null) {
+        const stream = await mediaDevices.getUserMedia({video: true})
+        video.srcObject = stream
+        video.play()
+      }
+    })()
+  }, [])
+    
+
   return (
     <div className="App">
       <header className="App-header">
@@ -19,6 +34,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <video ref={videoEl} />
     </div>
   );
 }
