@@ -6,6 +6,14 @@ function App() {
   const canvasEl = useRef(null)
   const drawRef = useRef()
 
+  const readyVideo = async video => {
+    return new Promise((resolve) => {
+      video.onloadedmetadata = () => {
+        resolve(video)
+      }
+    })
+  }
+  
   useEffect(() => {
     const video = videoEl.current
     const canvas = canvasEl.current
@@ -14,6 +22,7 @@ function App() {
       if (mediaDevices && video !== null) {
         const stream = await mediaDevices.getUserMedia({video: true})
         video.srcObject = stream
+        await readyVideo(video)
       }
     })()
     video.play()
