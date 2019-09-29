@@ -6,14 +6,10 @@ function App() {
   const canvasEl = useRef(null)
   const drawRef = useRef()
 
-  const readyVideo = async video => {
-    return new Promise((resolve) => {
-      video.onloadedmetadata = () => {
-        resolve(video)
-      }
-    })
+  const readyVideo = async video => () => {
+    video.onloadedmetadata = () => {}
   }
-  
+
   useEffect(() => {
     const video = videoEl.current
     const canvas = canvasEl.current
@@ -26,6 +22,7 @@ function App() {
       }
     })()
     video.play()
+    video.style.display = 'none'
 
     const drawFrame = () => {
       const videoWidth = video.videoWidth
