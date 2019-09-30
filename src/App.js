@@ -4,25 +4,21 @@ import './App.css'
 function App() {
   const videoEl = useRef(null)
   const canvasEl = useRef(null)
-  const drawRef = useRef()
-
-  const readyVideo = async video => () => {
-    video.onloadedmetadata = () => {}
-  }
 
   useEffect(() => {
     const video = videoEl.current
     const canvas = canvasEl.current
-    ;(async () => {
+
+    const setVideoStream = async () => {
       const { mediaDevices } = navigator
       if (mediaDevices && video !== null) {
+        video.style.display = 'none'
         const stream = await mediaDevices.getUserMedia({video: true})
         video.srcObject = stream
-        await readyVideo(video)
+        video.play()
       }
-    })()
-    video.play()
-    video.style.display = 'none'
+    }
+    setVideoStream()
 
     const drawFrame = () => {
       const videoWidth = video.videoWidth
@@ -33,9 +29,9 @@ function App() {
       const ctx = canvas.getContext('2d')
       ctx.clearRect(0, 0, videoWidth, videoHeight);
       ctx.drawImage(video, 0, 0, videoWidth, videoHeight)
-      drawRef.current = requestAnimationFrame(drawFrame)
+      requestAnimationFrame(drawFrame)
     }
-    drawRef.current = requestAnimationFrame(drawFrame)
+    drawFrame()
   }, [])
   
 
