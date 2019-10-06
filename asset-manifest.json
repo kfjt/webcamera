@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/webcamera/static/css/main.2cce8147.chunk.css",
-    "main.js": "/webcamera/static/js/main.54d2caab.chunk.js",
-    "main.js.map": "/webcamera/static/js/main.54d2caab.chunk.js.map",
-    "runtime~main.js": "/webcamera/static/js/runtime~main.346eea81.js",
-    "runtime~main.js.map": "/webcamera/static/js/runtime~main.346eea81.js.map",
-    "static/js/2.e82054f1.chunk.js": "/webcamera/static/js/2.e82054f1.chunk.js",
-    "static/js/2.e82054f1.chunk.js.map": "/webcamera/static/js/2.e82054f1.chunk.js.map",
+    "main.js": "/webcamera/static/js/main.6cebf2a4.chunk.js",
+    "main.js.map": "/webcamera/static/js/main.6cebf2a4.chunk.js.map",
+    "runtime~main.js": "/webcamera/static/js/runtime~main.2f65d160.js",
+    "runtime~main.js.map": "/webcamera/static/js/runtime~main.2f65d160.js.map",
+    "static/js/2.c89f6520.chunk.js": "/webcamera/static/js/2.c89f6520.chunk.js",
+    "static/js/2.c89f6520.chunk.js.map": "/webcamera/static/js/2.c89f6520.chunk.js.map",
     "index.html": "/webcamera/index.html",
-    "precache-manifest.00bbaa77b9cf0f246d31b5900ce99f7a.js": "/webcamera/precache-manifest.00bbaa77b9cf0f246d31b5900ce99f7a.js",
+    "precache-manifest.2e29de82a053ddaed28baef247452ee9.js": "/webcamera/precache-manifest.2e29de82a053ddaed28baef247452ee9.js",
     "service-worker.js": "/webcamera/service-worker.js",
     "static/css/main.2cce8147.chunk.css.map": "/webcamera/static/css/main.2cce8147.chunk.css.map"
   }
