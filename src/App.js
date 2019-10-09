@@ -52,6 +52,7 @@ function App() {
         maxDetections: 5,
         scoreThreshold: 0.6,
         nmsRadius: 20})
+      tensor.dispose()
 
       const pose_filtered = pose.filter(({score}) => 0.5 < score)
       
