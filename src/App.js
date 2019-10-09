@@ -6,6 +6,7 @@ import './App.css'
 function App() {
   const videoEl = useRef(null)
   const canvasEl = useRef(null)
+  const net = useRef(null)
 
   useEffect(() => {
     const video = videoEl.current
@@ -40,17 +41,18 @@ function App() {
     }
 
     const drawFrame = async () => {
-      const net = await posenet.load({})
+      const model = net.current ? net.current : await posenet.load({})
 
       const ctx = canvas.getContext('2d')
       ctx.drawImage(video, 0, 0)
 
       const tensor = tf.browser.fromPixels(canvas)
-      const pose = await net.estimateMultiplePoses(tensor, {
+      const pose = await model.estimateMultiplePoses(tensor, {
         flipHorizontal: false,
         maxDetections: 5,
         scoreThreshold: 0.6,
         nmsRadius: 20})
+      tensor.dispose()
 
       const pose_filtered = pose.filter(({score}) => 0.5 < score)
       
