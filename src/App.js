@@ -1,18 +1,22 @@
-import React, {useRef, useEffect} from 'react'
+import React, {useRef} from 'react'
 import './App.css'
-import WebCamera from './WebCamera'
-// import Keypoints from './Keypoints'
-import useVideo from './useVideo'
 
+import useVideo from './useVideo'
+import WebCamera from './WebCamera'
+import Keypoints from './Keypoints'
+
+// TODO: .layer {position: 'absolute'}
 const App = () => {
   const video = useRef(null)
   useVideo(video)
 
   return (
     <div className="App">
-      <video ref={video} />
-      <WebCamera videoEl={video} />
-      {/* <Keypoints video={cameraEl} /> */}
+      <video className="Input" ref={video} />
+      <div className="Output" >
+        <WebCamera className="layer" videoEl={video} />
+        <Keypoints className="layer" videoEl={video} />
+      </div>
     </div>
   )
 }
