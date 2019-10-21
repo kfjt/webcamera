@@ -1,6 +1,6 @@
 import React, {useRef, useEffect} from 'react'
 
-const WebCamera = props => {
+const OriginalVideo = props => {
   const {videoEl} = props
   const canvasEl = useRef(null)
 
@@ -31,11 +31,7 @@ const WebCamera = props => {
   }, [videoEl])
   
 
-  return (
-    <div className="WebCamera">
-      <canvas ref={canvasEl} />
-    </div>
-  )
+  return (<canvas ref={canvasEl} />)
 }
 
-export default WebCamera
+export default OriginalVideo

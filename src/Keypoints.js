@@ -48,11 +48,7 @@ const Keypoints = props => {
   }, [videoEl])
   
 
-  return (
-    <div className="Keypoints">
-      <canvas ref={canvasEl} />
-    </div>
-  )
+  return (<canvas ref={canvasEl} />)
 }
 
 
