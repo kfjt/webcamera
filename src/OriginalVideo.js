@@ -31,7 +31,7 @@ const OriginalVideo = props => {
   }, [videoEl])
   
 
-  return (<canvas ref={canvasEl} />)
+  return (<canvas ref={canvasEl} style={props.style} />)
 }
 
 export default OriginalVideo

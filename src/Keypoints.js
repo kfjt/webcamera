@@ -2,6 +2,7 @@ import React, {useRef, useEffect} from 'react'
 import * as posenet from '@tensorflow-models/posenet'
 import * as tf from '@tensorflow/tfjs'
 
+// TODO: Refresh drawing
 const Keypoints = props => {
   const {videoEl} = props
   const canvasEl = useRef(null)
@@ -48,7 +49,7 @@ const Keypoints = props => {
   }, [videoEl])
   
 
-  return (<canvas ref={canvasEl} />)
+  return (<canvas ref={canvasEl} style={props.style} />)
 }
 
 
