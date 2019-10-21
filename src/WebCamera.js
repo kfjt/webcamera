@@ -1,9 +1,10 @@
 import React, {useRef, useEffect} from 'react'
-import * as posenet from '@tensorflow-models/posenet'
+// import * as posenet from '@tensorflow-models/posenet'
 // import * as tf from '@tensorflow/tfjs'
 
-function WebCamera() {
-  const videoEl = useRef(null)
+const WebCamera = props => {
+  // const videoEl = useRef(null)
+  const {videoEl} = props
   const canvasEl = useRef(null)
 
   useEffect(() => {
@@ -61,26 +62,27 @@ function WebCamera() {
       requestAnimationFrame(drawFrame)
     }
 
-    const setVideoStream = async () => {
-      const { mediaDevices } = navigator
-      if (mediaDevices && video !== null) {
-        video.style.display = 'none'
-        video.srcObject = await mediaDevices.getUserMedia({video: true})
+    const play = async () => {
+    //   const { mediaDevices } = navigator
+    //   if (mediaDevices && video !== null) {
+    //     video.style.display = 'none'
+    //     video.srcObject = await mediaDevices.getUserMedia({video: true})
         video.onloadedmetadata = () => {
           canvas.width = video.videoWidth
           canvas.height = video.videoHeight
+          video.style.display = 'none'
         }
         video.onloadeddata = () => drawFrame()
         video.play()
-      }
+    //   }
     }
-    setVideoStream()
-  }, [])
+    play()
+  }, [videoEl])
   
 
   return (
-    <div className="App">
-      <video ref={videoEl} />
+    <div className="WebCamera">
+      {/* <video ref={videoEl} /> */}
       <canvas ref={canvasEl} />
     </div>
   )
