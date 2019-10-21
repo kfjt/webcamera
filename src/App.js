@@ -4,8 +4,19 @@ import WebCamera from './WebCamera'
 // import Keypoints from './Keypoints'
 
 const App = () => {
-  const videoEl = useRef(null)
-  
+  const video = useRef(null)
+  const videoEl = useVideo(video)
+
+  return (
+    <div className="App">
+      <video ref={video} />
+      <WebCamera videoEl={videoEl} />
+      {/* <Keypoints video={cameraEl} /> */}
+    </div>
+  )
+}
+
+const useVideo = videoEl => {
   useEffect(() => {
     const video = videoEl.current
     const setVideoStream = async () => {
@@ -15,15 +26,8 @@ const App = () => {
       }
     }
     setVideoStream()
-  })
-
-  return (
-    <div className="App">
-      <video ref={videoEl} />
-      <WebCamera videoEl={videoEl} />
-      {/* <Keypoints video={cameraEl} /> */}
-    </div>
-  )
+  }, [videoEl])
+  return videoEl
 }
 
 export default App
