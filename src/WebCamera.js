@@ -8,7 +8,7 @@ const WebCamera = () => {
   const video = useRef(null)
   useVideo(video)
 
-  const absolute = { position: 'absolute' }
+  const absolute = { position: 'absolute', top: 0, left: 0 }
   return (
     <div className="WebCamera">
       <video className="Input" ref={video} />

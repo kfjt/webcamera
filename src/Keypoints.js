@@ -27,7 +27,8 @@ const Keypoints = props => {
 
       const pose_filtered = pose.filter(({score}) => 0.5 < score)
       console.log(pose_filtered)
-      
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
       pose_filtered.forEach(({keypoints}) => drawKeypoints(keypoints, ctx))
       pose_filtered.forEach(({keypoints}) => drawAnonymous(keypoints, ctx))
 
@@ -39,7 +40,6 @@ const Keypoints = props => {
         canvas.height = video.videoHeight
     })
     video.addEventListener('loadeddata', drawFrame)
-
   }, [videoEl])
   
 
