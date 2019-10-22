@@ -15,23 +15,19 @@ const OriginalVideo = props => {
     }
 
     const play = async () => {
-      video.onloadedmetadata = () => {
+      video.addEventListener('loadedmetadata', () => {
         canvas.width = video.videoWidth
         canvas.height = video.videoHeight
         video.style.display = 'none'
-      }
-      const funcloadeddata = video.onloadeddata
-      video.onloadeddata = () => {
-        if ( funcloadeddata ) funcloadeddata()
-        drawFrame()
-      }
-      video.play()
+      })
+      video.addEventListener('loadeddata', video.play)
+      drawFrame()
     }
     play()
   }, [videoEl])
   
 
-  return (<canvas ref={canvasEl} style={props.style} />)
+  return (<canvas className="OriginalVideo" ref={canvasEl} style={props.style} />)
 }
 
 export default OriginalVideo

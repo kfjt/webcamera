@@ -34,22 +34,16 @@ const Keypoints = props => {
       requestAnimationFrame(drawFrame)
     }
 
-    const funcloadedmetadata = video.onloadedmetadata
-    video.onloadedmetadata = () => {
-        funcloadedmetadata()
+    video.addEventListener('loadedmetadata', () => {
         canvas.width = video.videoWidth
         canvas.height = video.videoHeight
-    }
-    const funcloadeddata = video.onloadeddata
-    video.onloadeddata = async () => {
-      if ( funcloadeddata ) funcloadeddata()
-      await drawFrame()
-    }
+    })
+    video.addEventListener('loadeddata', drawFrame)
 
   }, [videoEl])
   
 
-  return (<canvas ref={canvasEl} style={props.style} />)
+  return (<canvas className="Keypoints" ref={canvasEl} style={props.style} />)
 }
 
 
