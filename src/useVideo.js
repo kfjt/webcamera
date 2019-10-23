@@ -6,7 +6,7 @@ const useVideo = e => {
     const setVideoStream = async () => {
       const { mediaDevices } = navigator
       if (mediaDevices && video !== null) {
-        video.srcObject = await mediaDevices.getUserMedia({video: true})
+        video.srcObject = await mediaDevices.getUserMedia({video: { facingMode: 'environment' }})
       }
     }
     setVideoStream()
