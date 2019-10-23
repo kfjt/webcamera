@@ -1,7 +1,7 @@
-import React, {useRef, useEffect} from 'react'
+import React, { useRef, useEffect } from 'react'
 
 const OriginalVideo = props => {
-  const {videoEl} = props
+  const { videoEl } = props
   const canvasEl = useRef(null)
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const OriginalVideo = props => {
     video.addEventListener('loadeddata', video.play)
     video.addEventListener('loadeddata', drawFrame)
   }, [videoEl])
-  
+
 
   return (<canvas className="OriginalVideo" ref={canvasEl} style={props.style} />)
 }
