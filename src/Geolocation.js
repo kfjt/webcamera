@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const Geolocation = () => {
+const Geolocation = props => {
   const [coords, setCoords] = useState({})
 
   const { geolocation } = navigator
@@ -19,7 +19,7 @@ const Geolocation = () => {
   }, [geolocation])
 
   return (
-    <div className="geolocation">
+    <div className="geolocation" style={props.style}>
       <div >{`accuracy:${coords.accuracy}`}</div>
       <div >{`latitude:${coords.latitude}`}</div>
       <div >{`longitude:${coords.longitude}`}</div>
