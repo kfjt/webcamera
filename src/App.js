@@ -1,9 +1,9 @@
 import React from 'react'
 import './App.css'
 
-import WebCamera from './WebCamera'
+// import WebCamera from './WebCamera'
 // import VRScene from './VRScene'
-import Geolocation from './Geolocation'
+// import Geolocation from './Geolocation'
 import ARScene from './ARScene'
 
 const App = () => {
@@ -13,7 +13,7 @@ const App = () => {
     <div className="App" style={relative}>
       <ARScene position={absolute} />
       {/* <WebCamera position={absolute} /> */}
-      <Geolocation position={absolute} />
+      {/* <Geolocation position={absolute} /> */}
       {/* <VRScene position={absolute} /> */}
     </div>
   )
