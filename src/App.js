@@ -9,7 +9,7 @@ import ModelViewer from './ModelViewer'
 
 const App = () => {
   const relative = { position: 'relative' }
-  const absolute = { position: 'absolute', top: 0, left: 0 }
+  // const absolute = { position: 'absolute', top: 0, left: 0 }
   return (
     <div className="App" style={relative}>
       {/* <ARScene position={absolute} /> */}
