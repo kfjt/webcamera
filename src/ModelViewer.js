@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react'
-import '@google/model-viewer'
+// import '@google/model-viewer'
 
 import ARglb from './gltf/AR.glb'
 
