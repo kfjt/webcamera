@@ -8,9 +8,10 @@ const ModelViewer = () => {
 
   useEffect(() => {
     const modelViewer = mv.current
+    const srcURL = new URL(BallGlb, modelViewer.baseURI)
     modelViewer.ar = true
     modelViewer.cameraControls = true
-    modelViewer.src = BallGlb
+    modelViewer.src = srcURL.href
     modelViewer.iosSrc = BallUsdz
     modelViewer.quickLookBrowsers = 'safari chromea'
   }, [mv])
