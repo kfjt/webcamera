@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 
 const Geolocation = props => {
-  const { position } = props
+  const { position, setGeolocation } = props
   const [coords, setCoords] = useState({})
   const { geolocation } = navigator
 
   const getCoords = ({ coords }) => {
     const { accuracy, latitude, longitude } = coords
     setCoords({ accuracy, latitude, longitude })
+    setGeolocation(coords)
   }
 
   useEffect(() => {
