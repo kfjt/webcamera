@@ -5,7 +5,7 @@ import './App.css'
 // import VRScene from './VRScene'
 // import Geolocation from './Geolocation'
 // import ARScene from './ARScene'
-import ModelViewer from './ModelViewer'
+import {BallModelViewer} from './ModelViewer'
 
 const App = () => {
   const relative = { position: 'relative' }
@@ -16,7 +16,7 @@ const App = () => {
       {/* <WebCamera position={absolute} /> */}
       {/* <Geolocation position={absolute} /> */}
       {/* <VRScene position={absolute} /> */}
-      <ModelViewer />
+      <BallModelViewer />
     </div>
   )
 }
