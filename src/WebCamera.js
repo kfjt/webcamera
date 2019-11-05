@@ -16,6 +16,7 @@ const WebCamera = props => {
 
   return (
     <div className="WebCamera" style={position}>
+      <SelectVideo setDeviceId={setDeviceId} />
       <VideoCamera className="Input" videoEl={videoEl} deviceId={deviceId} />
       <div className="Output" style={relative} >
         <OriginalVideo className="layer" style={absolute} videoEl={videoEl} />
