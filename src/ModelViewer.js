@@ -3,22 +3,24 @@ import React, { useRef, useEffect } from 'react'
 
 import { BallGlb, BallUsdz } from './assets/Ball'
 
-const ModelViewer = () => {
+const BaseModelViewer = ({ glb, usdz }) => {
   const mv = useRef(null)
 
   useEffect(() => {
     const modelViewer = mv.current
-    const srcURL = new URL(BallGlb, modelViewer.baseURI)
+    const srcURL = new URL(glb, modelViewer.baseURI)
     modelViewer.ar = true
     modelViewer.cameraControls = true
     modelViewer.src = srcURL.href
-    modelViewer.iosSrc = BallUsdz
+    modelViewer.iosSrc = usdz
     modelViewer.quickLookBrowsers = 'safari chromea'
-  }, [mv])
+  }, [mv, glb, usdz])
 
   return (
     <model-viewer ref={mv} />
   )
 }
 
-export default ModelViewer
+export const BallModelViewer = () => (
+  <BaseModelViewer glb={BallGlb} usdz={BallUsdz} />
+)
