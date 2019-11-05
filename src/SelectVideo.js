@@ -12,7 +12,7 @@ const SelectVideo = props => {
         const mediaDeviceInfo = await navigator.mediaDevices.enumerateDevices()
         const videos = mediaDeviceInfo
           .filter(it => it.kind === 'videoinput')
-          .map((v, i) => <option value={v.deviceId} key={i + 1}>camera {i} {v.label}</option>)
+          .map((v, i) => <option value={v.deviceId} key={i + 1}>camera {i}: {v.label}</option>)
         videos.unshift(<option key='0'>select device</option>)
         setItems(videos)
       }
