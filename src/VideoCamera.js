@@ -8,7 +8,7 @@ const VideoCamera = props => {
     const setVideoStream = async () => {
       const { mediaDevices } = navigator
       if (mediaDevices && video !== null) {
-        video.srcObject = await mediaDevices.getUserMedia({ video: { deviceId, facingMode: 'environment' } })
+        video.srcObject = await mediaDevices.getUserMedia({ video: { facingMode: 'environment', deviceId } })
       }
     }
     setVideoStream()

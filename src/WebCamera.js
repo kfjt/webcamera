@@ -12,11 +12,9 @@ const WebCamera = props => {
   const relative = { position: 'relative' }
   const absolute = { position: 'absolute', top: 0, left: 0 }
 
-  if (!deviceId) return (<SelectVideo setDeviceId={setDeviceId} />)
-
   return (
     <div className="WebCamera" style={position}>
-      <SelectVideo setDeviceId={setDeviceId} />
+      <SelectVideo deviceId={deviceId} setDeviceId={setDeviceId} />
       <VideoCamera className="Input" videoEl={videoEl} deviceId={deviceId} />
       <div className="Output" style={relative} >
         <OriginalVideo className="layer" style={absolute} videoEl={videoEl} />
