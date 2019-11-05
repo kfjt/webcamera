@@ -1,8 +1,10 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 
-const useVideo = e => {
+const VideoCamera = props => {
+  const { videoEl } = props
+
   useEffect(() => {
-    const video = e.current
+    const video = videoEl.current
     const setVideoStream = async () => {
       const { mediaDevices } = navigator
       if (mediaDevices && video !== null) {
@@ -10,8 +12,9 @@ const useVideo = e => {
       }
     }
     setVideoStream()
-  }, [e])
-  return e
+  }, [videoEl])
+
+  return <video ref={videoEl} />
 }
 
-export default useVideo
+export default VideoCamera
