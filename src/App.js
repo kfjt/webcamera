@@ -1,22 +1,20 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import './App.css'
 
-import WebCamera from './WebCamera'
+import Realsense from './Realsense'
+// import WebCamera from './WebCamera'
 // import VRScene from './VRScene'
 // import Geolocation from './Geolocation'
 // import ARScene from './ARScene'
 // import {BallModelViewer} from './ModelViewer'
 
 const App = () => {
-  const relative = { position: 'relative' }
-  const absolute = { position: 'absolute', top: 0, left: 0 }
+  const videoRGB = useRef()
+  const videoDepth = useRef()
+
   return (
-    <div className="App" style={relative}>
-      {/* <ARScene position={absolute} /> */}
-      <WebCamera position={absolute} />
-      {/* <Geolocation position={absolute} /> */}
-      {/* <VRScene position={absolute} /> */}
-      {/* <BallModelViewer /> */}
+    <div className="App">
+      <Realsense videoRGB={videoRGB} videoDepth={videoDepth} />
     </div>
   )
 }
