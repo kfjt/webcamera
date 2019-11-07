@@ -18,16 +18,18 @@ const DepthView = props => {
     // }
     const color = data => {
       for (let index = 0; index < data.length; index += 4) {
-        data[index] *= 240
-        data[index + 1] *= 240
-        data[index + 2] *= 240
+        const x = (data[index] * 1000) % 240
+        data[index] = x
+        data[index + 1] = x
+        data[index + 2] = 0
+        // data[index + 3] *= 0.5
       }
     }
 
     const drawFrame = () => {
-      if (60 < frame.current) {
-        video.pause()
-      }
+      // if (60 < frame.current) {
+      //   video.pause()
+      // }
       frame.current += 1
       const ctx = canvas.getContext('2d')
       ctx.drawImage(video, 0, 0)

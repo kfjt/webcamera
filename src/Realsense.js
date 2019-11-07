@@ -26,6 +26,7 @@ const Realsense = props => {
       const mediaDeviceInfo = await mediaDevices.enumerateDevices()
       mediaDeviceInfo
         .filter(v => v.kind === 'videoinput')
+        .filter(v => v.label.includes('Depth'))
         .forEach(v => setupDevice({ device: getDevice(v.label), deviceId: v.deviceId }))
     }
     setVideoStream()
