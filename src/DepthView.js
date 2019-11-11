@@ -55,19 +55,19 @@ export const DepthWebgl = props => {
       const ctx = canvas.getContext('webgl2')
       ctx.color_buffer_float_ext = ctx.getExtension('EXT_color_buffer_float')
 
-      ctx.enable(ctx.BLEND);
-      ctx.blendFunc(ctx.SRC_ALPHA, ctx.ONE_MINUS_SRC_ALPHA);
+      ctx.enable(ctx.BLEND)
+      ctx.blendFunc(ctx.SRC_ALPHA, ctx.ONE_MINUS_SRC_ALPHA)
       // Shaders and program are needed only if rendering depth texture.
-      var vertex_shader = ctx.createShader(ctx.VERTEX_SHADER);
+      const vertex_shader = ctx.createShader(ctx.VERTEX_SHADER)
       ctx.shaderSource(vertex_shader, `
         attribute vec2 v;
         varying vec2 t;
         void main(){
           gl_Position = vec4(v.x * 2.0 - 1.0, 1.0 - v.y * 2.0, 0, 1);
           t = v;
-        }`);
-      ctx.compileShader(vertex_shader);
-      var pixel_shader = ctx.createShader(ctx.FRAGMENT_SHADER);
+        }`)
+      ctx.compileShader(vertex_shader)
+      const pixel_shader = ctx.createShader(ctx.FRAGMENT_SHADER)
       ctx.shaderSource(pixel_shader, `
         precision mediump float;
         uniform sampler2D s;
@@ -75,38 +75,38 @@ export const DepthWebgl = props => {
         void main(){
           vec4 tex = texture2D(s, t) * vec4(10.0, 10.0, 10.0, 1.0);
           gl_FragColor = tex.rrra;
-        }`);
-      ctx.compileShader(pixel_shader);
-      var program = ctx.createProgram();
-      ctx.attachShader(program, vertex_shader);
-      ctx.attachShader(program, pixel_shader);
-      ctx.linkProgram(program);
-      ctx.useProgram(program);
-      var vertex_location = ctx.getAttribLocation(program, "v");
-      ctx.enableVertexAttribArray(vertex_location);
-      ctx.uniform1i(ctx.getUniformLocation(program, "s"), 0);
-      var vertex_buffer = ctx.createBuffer();
-      ctx.bindBuffer(ctx.ARRAY_BUFFER, vertex_buffer);
-      ctx.bufferData(ctx.ARRAY_BUFFER, new Float32Array([0, 0, 1, 0, 1, 1, 0, 1]), ctx.STATIC_DRAW);
-      var index_buffer = ctx.createBuffer();
-      ctx.bindBuffer(ctx.ELEMENT_ARRAY_BUFFER, index_buffer);
-      ctx.bufferData(ctx.ELEMENT_ARRAY_BUFFER, new Uint16Array([0, 1, 2, 0, 2, 3]), ctx.STATIC_DRAW);
-      var depth_texture = ctx.createTexture();
-      ctx.bindTexture(ctx.TEXTURE_2D, depth_texture);
-      ctx.texParameteri(ctx.TEXTURE_2D, ctx.TEXTURE_WRAP_T, ctx.CLAMP_TO_EDGE);
-      ctx.texParameteri(ctx.TEXTURE_2D, ctx.TEXTURE_WRAP_S, ctx.CLAMP_TO_EDGE);
-      ctx.texParameteri(ctx.TEXTURE_2D, ctx.TEXTURE_MAG_FILTER, ctx.NEAREST);
-      ctx.texParameteri(ctx.TEXTURE_2D, ctx.TEXTURE_MIN_FILTER, ctx.NEAREST);
+        }`)
+      ctx.compileShader(pixel_shader)
+      const program = ctx.createProgram()
+      ctx.attachShader(program, vertex_shader)
+      ctx.attachShader(program, pixel_shader)
+      ctx.linkProgram(program)
+      ctx.useProgram(program)
+      const vertex_location = ctx.getAttribLocation(program, "v")
+      ctx.enableVertexAttribArray(vertex_location)
+      ctx.uniform1i(ctx.getUniformLocation(program, "s"), 0)
+      const vertex_buffer = ctx.createBuffer()
+      ctx.bindBuffer(ctx.ARRAY_BUFFER, vertex_buffer)
+      ctx.bufferData(ctx.ARRAY_BUFFER, new Float32Array([0, 0, 1, 0, 1, 1, 0, 1]), ctx.STATIC_DRAW)
+      const index_buffer = ctx.createBuffer()
+      ctx.bindBuffer(ctx.ELEMENT_ARRAY_BUFFER, index_buffer)
+      ctx.bufferData(ctx.ELEMENT_ARRAY_BUFFER, new Uint16Array([0, 1, 2, 0, 2, 3]), ctx.STATIC_DRAW)
+      const depth_texture = ctx.createTexture()
+      ctx.bindTexture(ctx.TEXTURE_2D, depth_texture)
+      ctx.texParameteri(ctx.TEXTURE_2D, ctx.TEXTURE_WRAP_T, ctx.CLAMP_TO_EDGE)
+      ctx.texParameteri(ctx.TEXTURE_2D, ctx.TEXTURE_WRAP_S, ctx.CLAMP_TO_EDGE)
+      ctx.texParameteri(ctx.TEXTURE_2D, ctx.TEXTURE_MAG_FILTER, ctx.NEAREST)
+      ctx.texParameteri(ctx.TEXTURE_2D, ctx.TEXTURE_MIN_FILTER, ctx.NEAREST)
       // Framebuffer for reading back the texture.
-      var framebuffer = ctx.createFramebuffer();
-      ctx.bindFramebuffer(ctx.FRAMEBUFFER, framebuffer);
-      ctx.framebufferTexture2D(ctx.FRAMEBUFFER, ctx.COLOR_ATTACHMENT0, ctx.TEXTURE_2D, depth_texture, 0);
-      ctx.bindFramebuffer(ctx.FRAMEBUFFER, null);
-      ctx.vertex_buffer = vertex_buffer;
-      ctx.vertex_location = vertex_location;
-      ctx.index_buffer = index_buffer;
-      ctx.depth_texture = depth_texture;
-      ctx.framebuffer = framebuffer;
+      const framebuffer = ctx.createFramebuffer()
+      ctx.bindFramebuffer(ctx.FRAMEBUFFER, framebuffer)
+      ctx.framebufferTexture2D(ctx.FRAMEBUFFER, ctx.COLOR_ATTACHMENT0, ctx.TEXTURE_2D, depth_texture, 0)
+      ctx.bindFramebuffer(ctx.FRAMEBUFFER, null)
+      ctx.vertex_buffer = vertex_buffer
+      ctx.vertex_location = vertex_location
+      ctx.index_buffer = index_buffer
+      ctx.depth_texture = depth_texture
+      ctx.framebuffer = framebuffer
 
       return ctx
     }
