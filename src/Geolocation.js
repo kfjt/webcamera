@@ -5,18 +5,18 @@ const Geolocation = props => {
   const [coords, setCoords] = useState({})
   const { geolocation } = navigator
 
-  const getCoords = ({ coords }) => {
-    const { accuracy, latitude, longitude } = coords
-    setCoords({ accuracy, latitude, longitude })
-    setGeolocation(coords)
-  }
-
   useEffect(() => {
+    const getCoords = ({ coords }) => {
+      const { accuracy, latitude, longitude } = coords
+      setCoords({ accuracy, latitude, longitude })
+      setGeolocation(coords)
+    }
+
     if (geolocation && geolocation.getCurrentPosition)
       geolocation.getCurrentPosition(getCoords, console.error)
     const timerId = setInterval(() => geolocation.getCurrentPosition(getCoords, console.error), 1000)
     return () => clearInterval(timerId)
-  }, [geolocation])
+  }, [geolocation, setGeolocation])
 
   return (
     <div className="Geolocation" style={position}>
