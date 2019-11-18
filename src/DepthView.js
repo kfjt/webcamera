@@ -170,3 +170,17 @@ export const DepthWebgl = props => {
 
   return (<canvas className="DepthWebgl" ref={depthWebgl} />)
 }
+
+// https://github.com/IntelRealSense/librealsense/tree/master/wrappers/nodejs
+export const BackgroundRemoval = props => {
+  const { videoDepth } = props
+  const canvasGL = useRef()
+  const canvas2D = useRef()
+
+  return (
+    <div className="BackgroundRemoval">
+      <canvas ref={canvasGL} />
+      <canvas ref={canvas2D} />
+    </div>
+  )
+}
